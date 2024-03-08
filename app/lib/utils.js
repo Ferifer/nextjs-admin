@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
+dotenv.config();
 const connection = {};
+
+// db.js
 
 export const connectToDB = async () => {
   try {
@@ -8,7 +12,9 @@ export const connectToDB = async () => {
     const db = await mongoose.connect(process.env.MONGO);
     connection.isConnected = db.connections[0].readyState;
   } catch (error) {
-    console.log(error);
-    throw new Error(error);
+    console.error("MongoDB connection error:", error);
+    throw new Error("Failed to connect to MongoDB!");
   }
 };
+
+export default connectToDB;
