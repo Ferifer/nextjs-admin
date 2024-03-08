@@ -1,9 +1,12 @@
+import { fetchUsers } from "@/app/lib/data";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import styles from "@/app/ui/dashboard/products/products.module.css";
 import Search from "@/app/ui/dashboard/search/search";
 import Image from "next/image";
 import Link from "next/link";
-const ProductsPage = () => {
+const ProductsPage = async () => {
+  const users = await fetchUsers();
+  console.log(users);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -44,7 +47,7 @@ const ProductsPage = () => {
 
             <td>
               <div className={styles.buttons}>
-                <Link href="/">
+                <Link href="/dashboard/products/test">
                   <button className={`${styles.button} ${styles.view}`}>
                     View
                   </button>
