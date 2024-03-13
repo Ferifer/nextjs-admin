@@ -39,6 +39,8 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+userSchema.index({ username: 1, email: 1 });
+
 const productSchema = new mongoose.Schema(
   {
     title: {
